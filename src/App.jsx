@@ -1,6 +1,7 @@
+import { Logs, SearchBar } from 'components';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -10,9 +11,12 @@ function App() {
   });
 
   return (
-    <div>
-      <h1>Hello world</h1>
-    </div>
+    <Fragment>
+      <SearchBar />
+      <div className='container'>
+        <Logs />
+      </div>
+    </Fragment>
   );
 }
 
