@@ -1,4 +1,4 @@
-import { Logs, SearchBar } from 'components';
+import { AddBtn, AddLogModal, Logs, SearchBar } from 'components';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import React, { Fragment, useEffect } from 'react';
@@ -14,6 +14,8 @@ function App() {
     <Fragment>
       <SearchBar />
       <div className='container'>
+        <AddBtn />
+        <AddLogModal />
         <Logs />
       </div>
     </Fragment>
