@@ -1,2 +1,3 @@
 import * as logsAPI from './logsAPI';
-export { logsAPI };
+import * as techsAPI from './techsAPI';
+export { logsAPI, techsAPI };
