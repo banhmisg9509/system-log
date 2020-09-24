@@ -1,24 +1,16 @@
-import { logsAPI } from 'api';
+import { logActions } from 'actions';
 import { LogItem, PreLoader } from 'components';
-import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-function Logs() {
-  const [logs, setLogs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+function Logs({ log: { logs, loading }, getLogs }) {
   useEffect(() => {
     getLogs();
-    //es-disable-next-line
+    //eslint-disable-next-line
   }, []);
 
-  const getLogs = async () => {
-    setLoading(true);
-    const data = await logsAPI.getLogs();
-    setLogs(data);
-    setLoading(false);
-  };
-
-  if (loading) {
+  if (loading || logs === null) {
     return <PreLoader />;
   }
 
@@ -30,10 +22,23 @@ function Logs() {
       {!loading && logs.length === 0 ? (
         <p className='center'>No logs to show ...</p>
       ) : (
-        logs.map((log) => <LogItem key={log.id} log={log}/>)
+        logs.map((log) => <LogItem key={log.id} log={log} />)
       )}
     </ul>
   );
 }
 
-export default Logs;
+Logs.propTypes = {
+  log: PropTypes.object.isRequired,
+  getLogs: PropTypes.func.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  log: state.log,
+});
+
+const mapDispatchToProps = {
+  getLogs: logActions.getLogs,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Logs);
