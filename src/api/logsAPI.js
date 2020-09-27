@@ -22,3 +22,13 @@ export const deleteLog = async (id) => {
   const data = await res.json();
   return data;
 };
+
+export const updateLog = async (log) => {
+  const res = await fetch(`/logs/${log.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(log),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  const data = await res.json();
+  return data;
+};

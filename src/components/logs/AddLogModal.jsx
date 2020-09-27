@@ -36,13 +36,11 @@ function AddLogModal({ addLog }) {
         <h4>Enter System Log</h4>
         <div className='row'>
           <div className='input-field'>
-            <label htmlFor='message' className='active'>
-              Log Message
-            </label>
             <input
               type='text'
               name='message'
               value={message}
+              placeholder='Log Message'
               onChange={(e) => setMessage(e.target.value)}
             />
           </div>
@@ -95,8 +93,8 @@ function AddLogModal({ addLog }) {
 }
 
 AddLogModal.propTypes = {
- addLog: PropTypes.func.isRequired
-}
+  addLog: PropTypes.func.isRequired,
+};
 
 const modalStyle = {
   width: '75%',

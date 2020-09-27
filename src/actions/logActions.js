@@ -1,5 +1,14 @@
 import { logsAPI } from 'api';
-import { GET_LOGS, SET_LOADING, LOGS_ERROR, ADD_LOG, DELETE_LOG } from 'types';
+import {
+  GET_LOGS,
+  SET_LOADING,
+  LOGS_ERROR,
+  ADD_LOG,
+  DELETE_LOG,
+  SET_CURRENT,
+  CLEAR_CURRENT,
+  UPDATE_LOG,
+} from 'types';
 
 export const getLogs = () => async (dispatch) => {
   try {
@@ -11,7 +20,6 @@ export const getLogs = () => async (dispatch) => {
     dispatch({ type: LOGS_ERROR, payload: error.response.data });
   }
 };
-
 
 export const addLog = (log) => async (dispatch) => {
   try {
@@ -35,6 +43,24 @@ export const deleteLog = (id) => async (dispatch) => {
   }
 };
 
+export const updateLog = (log) => async (dispatch) => {
+  try {
+    setLoading();
+
+    const data = await logsAPI.updateLog(log);
+    dispatch({ type: UPDATE_LOG, payload: data });
+  } catch (error) {
+    dispatch({ type: LOGS_ERROR, payload: error.response.data });
+  }
+};
+
+export const setCurrent = (log) => {
+  return { type: SET_CURRENT, payload: log };
+};
+
+export const clearCurrent = () => {
+  return { type: CLEAR_CURRENT };
+};
 
 // set loading to true
 export const setLoading = () => {
