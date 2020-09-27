@@ -13,3 +13,12 @@ export const addLog = async (log) => {
   const data = await res.json();
   return data;
 };
+
+export const deleteLog = async (id) => {
+  const res = await fetch(`/logs/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  const data = await res.json();
+  return data;
+};
