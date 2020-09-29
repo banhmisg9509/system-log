@@ -32,3 +32,9 @@ export const updateLog = async (log) => {
   const data = await res.json();
   return data;
 };
+
+export const searchLogs = async (text) => {
+  const res = await fetch(`/logs?q=${text}`);
+  const data = await res.json();
+  return data;
+};

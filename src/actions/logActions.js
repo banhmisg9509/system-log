@@ -8,6 +8,7 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_LOG,
+  SEARCH_LOGS
 } from 'types';
 
 export const getLogs = () => async (dispatch) => {
@@ -49,6 +50,17 @@ export const updateLog = (log) => async (dispatch) => {
 
     const data = await logsAPI.updateLog(log);
     dispatch({ type: UPDATE_LOG, payload: data });
+  } catch (error) {
+    dispatch({ type: LOGS_ERROR, payload: error.response.data });
+  }
+};
+
+export const searchLogs = (text) => async (dispatch) => {
+  try {
+    setLoading();
+
+    const logs = await logsAPI.searchLogs(text);
+    dispatch({ type: SEARCH_LOGS, payload: logs });
   } catch (error) {
     dispatch({ type: LOGS_ERROR, payload: error.response.data });
   }
