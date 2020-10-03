@@ -13,56 +13,56 @@ import {
 
 export const getLogs = () => async (dispatch) => {
   try {
-    setLoading();
+    dispatch(setLoading());
 
     const logs = await logsAPI.getLogs();
     dispatch({ type: GET_LOGS, payload: logs });
   } catch (error) {
-    dispatch({ type: LOGS_ERROR, payload: error.response.data });
+    dispatch({ type: LOGS_ERROR, payload: error.response.statusText });
   }
 };
 
 export const addLog = (log) => async (dispatch) => {
   try {
-    setLoading();
+    dispatch(setLoading());
 
     const data = await logsAPI.addLog(log);
     dispatch({ type: ADD_LOG, payload: data });
   } catch (error) {
-    dispatch({ type: LOGS_ERROR, payload: error.response.data });
+    dispatch({ type: LOGS_ERROR, payload: error.response.statusText });
   }
 };
 
 export const deleteLog = (id) => async (dispatch) => {
   try {
-    setLoading();
+    dispatch(setLoading());
 
     await logsAPI.deleteLog(id);
     dispatch({ type: DELETE_LOG, payload: id });
   } catch (error) {
-    dispatch({ type: LOGS_ERROR, payload: error.response.data });
+    dispatch({ type: LOGS_ERROR, payload: error.response.statusText });
   }
 };
 
 export const updateLog = (log) => async (dispatch) => {
   try {
-    setLoading();
+    dispatch(setLoading());
 
     const data = await logsAPI.updateLog(log);
     dispatch({ type: UPDATE_LOG, payload: data });
   } catch (error) {
-    dispatch({ type: LOGS_ERROR, payload: error.response.data });
+    dispatch({ type: LOGS_ERROR, payload: error.response.statusText });
   }
 };
 
 export const searchLogs = (text) => async (dispatch) => {
   try {
-    setLoading();
+    dispatch(setLoading());
 
     const logs = await logsAPI.searchLogs(text);
     dispatch({ type: SEARCH_LOGS, payload: logs });
   } catch (error) {
-    dispatch({ type: LOGS_ERROR, payload: error.response.data });
+    dispatch({ type: LOGS_ERROR, payload: error.response.statusText });
   }
 };
 

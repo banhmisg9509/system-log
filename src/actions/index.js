@@ -1,2 +1,3 @@
 import * as logActions from './logActions';
-export { logActions };
+import * as techActions from './techActions';
+export { logActions, techActions };
