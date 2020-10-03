@@ -1,4 +1,5 @@
 import { logActions } from 'actions';
+import TechSelectOptions from 'components/techs/TechSelectOptions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -66,9 +67,7 @@ function EditLogModal({ log, updateLog }) {
               <option value='' disabled>
                 Select Technician
               </option>
-              <option value='John Doe'>John Doe</option>
-              <option value='Sam Smith'>Sam Smith</option>
-              <option value='Sara Wilson'>Sara Wilson</option>
+              <TechSelectOptions />
             </select>
           </div>
         </div>
@@ -103,8 +102,7 @@ function EditLogModal({ log, updateLog }) {
 }
 
 const modalStyle = {
-  width: '75%',
-  height: '75%',
+  width: '75%'
 };
 
 EditLogModal.propTypes = {

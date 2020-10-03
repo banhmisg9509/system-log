@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
 import { logActions } from 'actions';
+import { TechSelectOptions } from 'components';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 function AddLogModal({ addLog }) {
   const [message, setMessage] = useState('');
@@ -56,9 +57,7 @@ function AddLogModal({ addLog }) {
               <option value='' disabled>
                 Select Technician
               </option>
-              <option value='John Doe'>John Doe</option>
-              <option value='Sam Smith'>Sam Smith</option>
-              <option value='Sara Wilson'>Sara Wilson</option>
+              <TechSelectOptions />
             </select>
           </div>
         </div>
@@ -97,8 +96,7 @@ AddLogModal.propTypes = {
 };
 
 const modalStyle = {
-  width: '75%',
-  height: '75%',
+  width: '75%'
 };
 
 export default connect(null, { addLog: logActions.addLog })(AddLogModal);

@@ -30,7 +30,7 @@ function LogItem({ log, deleteLog, setCurrent }) {
           <Moment format='MMMM Do YYYY, h:mm:ss a'>{log.date}</Moment>
         </span>
         <a
-          href='#confirm-modal'
+          href="#!"
           className='secondary-content modal-trigger'
           onClick={onDelete}
         >
