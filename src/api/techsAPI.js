@@ -13,3 +13,12 @@ export const addTech = async (tech) => {
   const data = await res.json();
   return data;
 };
+
+export const deleteTech = async (id) => {
+  const res = await fetch(`/techs/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  const data = await res.json();
+  return data;
+};

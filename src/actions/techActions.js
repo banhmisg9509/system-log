@@ -1,6 +1,7 @@
 import { techsAPI } from 'api';
 import {
   ADD_TECH,
+  DELETE_TECH,
   GET_TECHS,
   SET_LOADING,
   TECHS_ERRORS,
@@ -21,6 +22,16 @@ export const addTech = (tech) => async (dispatch) => {
   try {
     const data = await techsAPI.addTech(tech);
     dispatch({ type: ADD_TECH, payload: data });
+  } catch (error) {
+    dispatch({ type: TECHS_ERRORS, payload: error.response.statusText });
+  }
+};
+
+
+export const deleteTech = (id) => async (dispatch) => {
+  try {
+    await techsAPI.deleteTech(id);
+    dispatch({ type: DELETE_TECH, payload: id });
   } catch (error) {
     dispatch({ type: TECHS_ERRORS, payload: error.response.statusText });
   }

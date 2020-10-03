@@ -31,7 +31,7 @@ function LogItem({ log, deleteLog, setCurrent }) {
         </span>
         <a
           href="#!"
-          className='secondary-content modal-trigger'
+          className='secondary-content'
           onClick={onDelete}
         >
           <i className='material-icons grey-text'>delete</i>
